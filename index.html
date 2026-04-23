@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cooper — GAA AI Analytics</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark-green: #0f2d13;
+      --mid-green:  #1a4d20;
+      --bright-green: #3cb54a;
+      --light-green: #5fd46e;
+      --white: #f5f5f5;
+      --gray: #a8b8aa;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--dark-green);
+      color: var(--white);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    /* ── Logo area ── */
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .shield {
+      width: 72px;
+      height: 72px;
+    }
+
+    .logo-text {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--white);
+    }
+
+    /* ── Tagline ── */
+    .tagline {
+      font-size: 1.05rem;
+      color: var(--bright-green);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+    }
+
+    /* ── Coming soon ── */
+    .headline {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 900;
+      text-align: center;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .headline span {
+      color: var(--bright-green);
+    }
+
+    .sub {
+      color: var(--gray);
+      font-size: 1rem;
+      text-align: center;
+      max-width: 480px;
+      line-height: 1.6;
+      margin-bottom: 3rem;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: var(--bright-green);
+      border-radius: 2px;
+      margin: 0 auto 3rem;
+    }
+
+    /* ── Interest form ── */
+    .form-card {
+      background: var(--mid-green);
+      border: 1px solid #2a6030;
+      border-radius: 16px;
+      padding: 2.4rem 2rem;
+      width: 100%;
+      max-width: 460px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    }
+
+    .form-card h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-card p {
+      color: var(--gray);
+      font-size: 0.88rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .field {
+      margin-bottom: 1rem;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 0.35rem;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      background: var(--dark-green);
+      border: 1px solid #2a6030;
+      border-radius: 8px;
+      padding: 0.7rem 1rem;
+      color: var(--white);
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder { color: #4a6a4d; }
+
+    .field input:focus,
+    .field textarea:focus { border-color: var(--bright-green); }
+
+    .field textarea { resize: vertical; min-height: 90px; }
+
+    .btn {
+      width: 100%;
+      padding: 0.85rem;
+      background: var(--bright-green);
+      color: var(--dark-green);
+      font-size: 1rem;
+      font-weight: 800;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.1s;
+      margin-top: 0.5rem;
+    }
+
+    .btn:hover { background: var(--light-green); }
+    .btn:active { transform: scale(0.98); }
+
+    .success {
+      display: none;
+      text-align: center;
+      padding: 1rem;
+      color: var(--bright-green);
+      font-weight: 600;
+    }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 3rem;
+      color: #3a5a3d;
+      font-size: 0.78rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <div class="logo-wrap">
+    <!-- Inline SVG shield logo matching Cooper brand -->
+    <svg class="shield" viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
+      <!-- Shield body -->
+      <path d="M50 5 L90 22 L90 60 Q90 90 50 105 Q10 90 10 60 L10 22 Z"
+            fill="#1a4d20" stroke="#3cb54a" stroke-width="2"/>
+      <!-- Camera body -->
+      <rect x="28" y="42" width="44" height="30" rx="5" fill="#0f2d13" stroke="#3cb54a" stroke-width="1.5"/>
+      <!-- Lens -->
+      <circle cx="50" cy="57" r="11" fill="#3cb54a" opacity="0.15" stroke="#3cb54a" stroke-width="1.5"/>
+      <circle cx="50" cy="57" r="7" fill="#3cb54a" opacity="0.3"/>
+      <circle cx="50" cy="57" r="4" fill="#3cb54a"/>
+      <!-- Wifi arcs -->
+      <path d="M43 28 Q50 22 57 28" fill="none" stroke="#3cb54a" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M38 22 Q50 14 62 22" fill="none" stroke="#3cb54a" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M33 16 Q50 6 67 16" fill="none" stroke="#3cb54a" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+      <!-- GAA ball hint on camera -->
+      <ellipse cx="50" cy="72" rx="10" ry="6" fill="none" stroke="#3cb54a" stroke-width="1" opacity="0.5"/>
+    </svg>
+    <span class="logo-text">Cooper</span>
+  </div>
+
+  <p class="tagline">GAA AI Analytics Platform</p>
+
+  <h1 class="headline">Something big is<br><span>coming soon.</span></h1>
+  <p class="sub">
+    AI-powered match analysis and smart recording hardware built specifically for GAA.
+    Be the first to know when we launch.
+  </p>
+
+  <div class="divider"></div>
+
+  <!-- Expression of interest form -->
+  <div class="form-card">
+    <h2>Register your interest</h2>
+    <p>Drop us your details and we'll be in touch as soon as we're ready.</p>
+
+    <form id="eoi-form" action="https://formspree.io/f/mpqkkazp" method="POST">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required />
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required />
+      </div>
+      <div class="field">
+        <label for="club">Club / Organisation</label>
+        <input type="text" id="club" name="club" placeholder="St. Patrick's GAA, etc." />
+      </div>
+      <div class="field">
+        <label for="message">Anything else?</label>
+        <textarea id="message" name="message" placeholder="Tell us about your team, what you'd love to see..."></textarea>
+      </div>
+      <button type="submit" class="btn">Send Expression of Interest</button>
+    </form>
+    <p class="success" id="success-msg">Thanks! We'll be in touch soon.</p>
+  </div>
+
+  <footer>
+    &copy; 2025 Cooper Analytics Ltd. All rights reserved.
+  </footer>
+
+  <script>
+    const form = document.getElementById('eoi-form');
+    const success = document.getElementById('success-msg');
+
+    form.addEventListener('submit', async (e) => {
+      // If using Formspree, let it handle naturally.
+      // Only intercept if the action URL hasn't been set up yet.
+      if (form.action.includes('YOUR_FORM_ID')) {
+        e.preventDefault();
+        // Fallback: open mail client
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const club = document.getElementById('club').value;
+        const msg = document.getElementById('message').value;
+        const body = encodeURIComponent(
+          `Name: ${name}\nEmail: ${email}\nClub: ${club}\n\n${msg}`
+        );
+        window.location.href = `mailto:hello@cooper.ie?subject=Expression of Interest&body=${body}`;
+        form.style.display = 'none';
+        success.style.display = 'block';
+      }
+    });
+  </script>
+
+</body>
+</html>
